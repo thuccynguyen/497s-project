@@ -1,4 +1,4 @@
-# Microservice Milestone 2: manageUserState
+# Microservice Milestone 2: createAccount
 
 This microservice was developed by Jessica Green
 
