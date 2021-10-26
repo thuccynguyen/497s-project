@@ -8,6 +8,7 @@ const users = []
 
 app.get('/users', (req, res) => {
   res.json(users)
+  res.status(200).send()
 })
 
 app.post('/users', async (req, res) => {
