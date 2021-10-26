@@ -8,6 +8,10 @@ const users = []
 
 app.get('/users', (req, res) => {
   res.json(users)
+<<<<<<< HEAD
+=======
+  res.status(200).send()
+>>>>>>> 7923b82c1b6ce819fe47d764ecb7545053ccf7b8
 })
 
 app.post('/users', async (req, res) => {
