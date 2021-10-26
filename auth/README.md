@@ -26,6 +26,6 @@ a 500 is sent if the password is not present.
 
 | route         | access      | description                          | status codes | 
 | --------------| ------------| ------------------------------------ |--------------|
-| /users        | all         | pushes user to local object          | 201, 500     |
+| /user         | all         | pushes user to local object          | 201, 500     |
 | /users/login  | all         | checks if user is present in object  | 400, 500     |
 
