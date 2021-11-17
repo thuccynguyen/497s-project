@@ -27,13 +27,14 @@ app.post('/user', async (req, res) => {
 })
 
 app.post('/users/login', async (req, res) => {
-  const user = users.find(user => user.username === req.body.username)
+  const user = users.find(user => user.username === req.body.username);
+  let authorized = false;
   if (user == null) {
     return res.status(400).send('Cannot find user');
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-
+      authorized = true;
       res.send('Success');
     } else {
       res.send('Not Allowed');
@@ -41,10 +42,11 @@ app.post('/users/login', async (req, res) => {
   } catch {
     res.status(500).send();
   }
+  
       await axios.post('http://localhost:5000/events', {
         type: 'UserAuth',
         data: {
-          id: commentId,
+          id: userId,
           user: username,
           password: hashedPassword
         }
