@@ -1,20 +1,20 @@
 {
-  "name": "497s-project",
+  "name": "auth",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start_server": "nodemon server.js",
-    "docker_build": "docker build -t auth-server -f Dockerfile .",
-    "docker_run": "docker run -d --rm --name auth-server -p 4000:4000 auth-server",
-    "docker_stop": "docker stop auth-server"
+    "start_server": "nodemon index.js",
+    "docker_build": "docker build -t auth-service -f Dockerfile .",
+    "docker_run": "docker run -d --rm --name auth-service -p 4000:4000 auth-server",
+    "docker_stop": "docker stop auth-service"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thuccynguyen/497s-project.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Zack Simonelli",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/thuccynguyen/497s-project/issues"

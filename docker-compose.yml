@@ -1,0 +1,8 @@
+ version: "3.7"
+
+ services:
+  auth:
+    image: 6e1d39b7bb68
+    ports:
+      - 4000:4000
+    working_dir: /497S-Project/auth
