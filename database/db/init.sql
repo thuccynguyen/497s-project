@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS users 
 (
-    userId varchar(255), 
+    userId int PRIMARY KEY, 
     firstName varchar(255), 
     lastName varchar(255), 
     emailAddress varchar(255),
@@ -27,4 +27,30 @@ INSERT INTO users VALUES
 INSERT INTO users VALUES 
 (
     '3', 'Zack', 'Simonelli', 'zsimonelli@umass.edu', 'zsimonelli', 0, 0
+);
+
+CREATE TABLE IF NOT EXISTS comments 
+(
+    commentId int PRIMARY KEY,
+    userId int REFERENCES users(userId)
+);
+
+INSERT INTO comments VALUES 
+(
+    0, 0
+);
+
+INSERT INTO comments VALUES 
+(
+    1, 1
+);
+
+INSERT INTO comments VALUES 
+(
+    2, 2
+);
+
+INSERT INTO comments VALUES 
+(
+    3, 3
 );
