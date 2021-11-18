@@ -11,11 +11,18 @@ app.use(express.static(__dirname));
 const users = {};
 const userId = 0;
 
-app.get('/create/:id', function(req, res){
-    res.status(200).send(users)
+app.post("/events", function(req, res){
+    const { type, data } = req.body;
+    console.log("Event Received:", req.body.type);
+
+    res.send(users);
 })
 
-app.post('/create', function(req, res){
+app.get('/user/:id', function(req, res){
+    res.status(200).send(users[req.params.id])
+})
+
+app.post('/user', function(req, res){
     userId = crypto.randomBytes(6).toString("hex");
 
     const username = req.body.username;
@@ -27,9 +34,18 @@ app.post('/create', function(req, res){
         pWord: password
     };
 
-    res.status(200).send(users[id])
+    await axios.post('http://localhost:4001/events', {
+        type: 'UserCreated',
+        data: {
+            id: userId,
+            uName: username,
+            pWord: password
+        },
+    });
+
+    res.status(200).send(users[userId])
 })
 
-app.listen(5000, function(){
-    console.log("Server listening on port 5000")
+app.listen(4001, function(){
+    console.log("Listening on port 4001")
 })

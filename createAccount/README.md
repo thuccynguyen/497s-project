@@ -4,8 +4,7 @@ This microservice was developed by Jessica Green
 
 ## Overview
 
-This microservice is intended to create a user who has logged in to our application. This microservice stores the user information in an array, but eventually a database. It allows you to get
-the users' username and password, as well as the unique ID that identifies each of the users that have already been created.
+This microservice is intended to create a user who has logged in to our application. This microservice stores the user information in an array, but eventually a database. It allows you to get the users' username and password, as well as the unique ID that identifies each of the users that have already been created.
 Additionally, this service allows you to create a new user and store their username, password, and creates a unique ID to identify that user.
 
 ## API end-points

@@ -1,11 +1,10 @@
 {
-  "name": "createaccount",
+  "name": "posts",
   "version": "1.0.0",
-  "description": "a microservice for creating a user",
-  "main": "createAccount.js",
+  "description": "a microservice that creates posts for a specific user",
+  "main": "index.js",
   "scripts": {
-    "test": "node createAccount.js",
-    "start": "nodemon createAccount.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +17,8 @@
   },
   "homepage": "https://github.com/thuccynguyen/497s-project#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "cors": "^2.8.5",
-    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "nodemon": "^2.0.14"
   }
