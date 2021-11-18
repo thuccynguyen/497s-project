@@ -12,7 +12,7 @@ COPY ./package-lock.json ./
 RUN npm install
 
 # Copy the code into the container
-COPY ./server.js ./server.js
+COPY . /server.js 
 
 # our app is running on port 4000 within the container, so need to expose it
 EXPOSE 4000

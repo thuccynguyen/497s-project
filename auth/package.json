@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start_server": "nodemon server.js",
+    "docker_build": "docker build -t auth-server -f Dockerfile .",
+    "docker_run": "docker run -d --rm --name auth-server -p 4000:4000 auth-server",
+    "docker_stop": "docker stop auth-server"
   },
   "repository": {
     "type": "git",
