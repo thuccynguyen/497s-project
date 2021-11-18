@@ -46,7 +46,7 @@ app.post('/users/login', async (req, res) => {
       await axios.post('http://localhost:5000/events', {
         type: 'UserAuth',
         data: {
-          id: userId,
+          // id: userId,
           user: username,
           password: hashedPassword
         }
