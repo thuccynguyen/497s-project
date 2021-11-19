@@ -5,7 +5,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const users = []
+const users = ["User"]
 
 app.get('/users', (req, res) => 
 {
@@ -59,7 +59,7 @@ app.post('/validate/username', function(req, res)
     }
 })
 
-app.listen(5000, function()
+app.listen(4002, function()
 {
-    console.log("Server listening on port 5000")
+    console.log("Server listening on port 4002")
 })

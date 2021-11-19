@@ -1,0 +1,13 @@
+{
+  "name": "validateAccount",
+  "description": "This microservice was developed by Johan Thomas Sajan.",
+  "version": "1.0.0",
+  "main": "validate-account.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
