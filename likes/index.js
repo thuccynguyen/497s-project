@@ -18,7 +18,7 @@ app.post("/events", (req, res) => {
   console.log("Event Received:", req.body.type);
 
   if (type === "PostCreated") {
-     const {pId }= data;
+     const { pId }= data;
     
     posts[pId] = { pid: pId, liked: false, total_likes: 0 };
 

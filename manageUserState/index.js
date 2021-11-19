@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const axios = require('axios')
 
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
@@ -10,13 +11,20 @@ app.use(express.static(__dirname));
 var curr_user = {id: "", password: ""}
 var curr_state = "guest-user"
 
-app.post('/login', function (req, res) {
-    const user = req.body.id;
+app.post('/login', async function (req, res) {
+    const user = req.body.username;
     const pass = req.body.password;
-    curr_user.id = user;
-    curr_user.password = pass;
-    curr_state = "active-user"
-    res.status(200).send("Welcome, " + curr_user.id + "!")
+
+    await axios.post("http://localhost:5000/events", {
+        type: 'LoginAttempted',
+        data: {
+            username: user,
+            password: pass
+        }
+    })
+
+    res.status(200).send("Welcome " + user)
+    
 
 })
 
@@ -27,8 +35,21 @@ app.post('/logout', function(req, res) {
     res.status(200).send("You have been logged out.")
 })
 
-app.listen(8080, function () {
-  console.log('server listening on port 8080')
+app.listen(4003, function () {
+  console.log('Listening on port 4003')
+})
+
+app.post('/events', (req, res) => {
+    const {type, data} = req.body
+    console.log('Event Received:', type)
+
+    if (type === 'UserAuthorized') {
+        curr_user.id = data.user;
+        curr_user.password = data.password;
+        curr_state = "active-user"
+    }
+
+    res.send({})
 })
 
 app.get('/user/account', function (req, res) {
