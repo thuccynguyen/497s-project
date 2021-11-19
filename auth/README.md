@@ -29,3 +29,9 @@ a 500 is sent if the password is not present.
 | /user         | all         | pushes user to local object          | 201, 500     |
 | /users/login  | all         | checks if user is present in object  | 400, 500     |
 
+
+### Event Bus Messages
+
+| type          | data                   | action                               |  role    |
+| --------------| -----------------------| ------------------------------------ |----------|
+| UserAuthenticated   | username, password                     | alerts eventbus of an authenticated user      | received |
