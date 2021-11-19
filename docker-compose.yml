@@ -2,7 +2,7 @@
 
  services:
   auth:
-    image: 6e1d39b7bb68
+    image: 8e94b9f083c8
     ports:
       - 4000:4000
     working_dir: /497S-Project/auth

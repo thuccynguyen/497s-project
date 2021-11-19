@@ -6,7 +6,7 @@
   "scripts": {
     "start_server": "nodemon index.js",
     "docker_build": "docker build -t auth-service -f Dockerfile .",
-    "docker_run": "docker run -d --rm --name auth-service -p 4000:4000 auth-server",
+    "docker_run": "docker run -d --rm --name auth-service -p 4000:4000 auth-service",
     "docker_stop": "docker stop auth-service"
   },
   "repository": {
