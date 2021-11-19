@@ -43,14 +43,16 @@ app.post('/users/login', async (req, res) => {
     res.status(500).send();
   }
   
+  if(authorized){
       await axios.post('http://localhost:5000/events', {
-        type: 'UserAuth',
+        type: 'UserAuthorized',
         data: {
           // id: userId,
-          user: username,
-          password: hashedPassword
+          user: req.body.username,
+          password: req.body.password
         }
       });
+    }
 
 });
 

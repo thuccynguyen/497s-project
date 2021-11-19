@@ -1,5 +1,5 @@
 # pull the Node Docker image
-FROM node
+FROM node:current-alpine
 
 # Create the directory inside the container for the app
 WORKDIR /497S-Project/auth
@@ -12,7 +12,7 @@ COPY ./package-lock.json ./
 RUN npm install
 
 # Copy the code into the container
-COPY . /index.js 
+COPY . ./auth/index.js 
 
 # our app is running on port 4000 within the container, so need to expose it
 EXPOSE 4000
