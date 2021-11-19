@@ -8,6 +8,14 @@ This microservice handles liking a post, updates the number of total likes of a 
 
 The microservice utilizes the event bus architecture and listens for PostCreated events to get the post ID and map that to the total number of likes in a post and a liked status to ensure that a user's like only counts once. 
 
+## API end-points
+
+| route            | access      | description                          | status codes |
+| -----------------| ------------| ------------------------------------ |--------------|
+| /posts/:id/like  | active-user | likes posts                          | 200          |
+| /events          | all         | retrieves and parses events.         | 200          |
+
+
 ## Event Bus Messages
 
 | type          | data                   | action                               |  role    |
