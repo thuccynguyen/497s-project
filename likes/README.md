@@ -14,7 +14,7 @@ The microservice utilizes the event bus architecture and listens for PostCreated
 | -----------------| ------------| ------------------------------------ |--------------|
 | /posts/:id/like  | active-user | likes posts                          | 200          |
 | /events          | all         | retrieves and parses events.         | 200          |
-| 
+
 
 ## Event Bus Messages
 
