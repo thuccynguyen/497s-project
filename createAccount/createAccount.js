@@ -34,7 +34,7 @@ app.post('/user', function(req, res){
         pWord: password
     };
 
-    await axios.post('http://localhost:4001/events', {
+    await axios.post('http://localhost:5000/events', {
         type: 'UserCreated',
         data: {
             id: userId,
