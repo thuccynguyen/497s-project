@@ -4,8 +4,8 @@
   "description": "a microservice prototype",
   "main": "moderateUserStatus.js",
   "scripts": {
-    "test": "node moderateUserStatus.js",
-    "start": "nodemon moderateUserStatus.js"
+    "test": "node index.js",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

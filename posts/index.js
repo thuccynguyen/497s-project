@@ -18,7 +18,7 @@ app.post("/events", function(req, res){
     res.send(posts);
 })
 
-app.post('/user/:id/create', function(req, res){
+app.post('/user/:id/create', async function(req, res){
     userId = req.params.id;
     postId = crypto.randomBytes(6).toString("hex");
 
@@ -29,7 +29,7 @@ app.post('/user/:id/create', function(req, res){
         pContent: content
     };
 
-    await axios.post('http://localhost:4004/events', {
+    await axios.post('http://localhost:5000/events', {
         type: 'PostCreated',
         data: {
             uId: userId,
