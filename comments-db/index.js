@@ -26,7 +26,7 @@ app.post("/events", async (req, res) =>
     if (type == "CommentCreated")
     {
         const {commentId, postId} = data;
-        const text = "INSERT INTO comments VALUES ($1, $2)";
+        const text = 'INSERT INTO comments VALUES ($1, $2)';
         const values = [commentId, postId];
         await client.query(text, values);
     }

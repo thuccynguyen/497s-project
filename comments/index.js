@@ -32,7 +32,7 @@ app.post("/events", async (req, res) =>
 app.post("/posts/:id/comments", async (req, res) => 
 {
   const id = req.params.id;
-  const commentId = crypto.randomBytes(4).toString("hex");
+  const commentId = (Math.floor(Math.random() * 4)).toString();
   const comment = req.body.content;
 
   comments[id] = 

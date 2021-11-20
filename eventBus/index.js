@@ -46,6 +46,12 @@ app.post("/events", (req, res) => {
   axios.post("http://localhost:4007/events", event).catch((err) => {
     console.log(err.message);
   });
+
+  // comments-db
+  axios.post("http://localhost:4008/events", event).catch((err) => {
+    console.log(err.message);
+  });
+
   res.send({ status: "OK" });
 });
 
