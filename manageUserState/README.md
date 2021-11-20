@@ -34,3 +34,20 @@ These routes return a status code of 200 when successfully completed. /login tak
 | /login        | guest-user  | login to registered account          | 200          |
 | /logout       | active-user | logout back to guest user            | 200          |
 
+## Event Bus Messages
+
+| type          | data               | action                               |  role    |
+| --------------| -------------------| ------------------------------------ |----------|
+| UserAuthorized| user, password     | logs user in and updates user state  | received |
+| LoginAttempted| username, password | attemps authorization with data      | sent     |
+
+## How to Build
+
+This microservice is built with Nodejs and is packaged by npm. It requires these dependencies:
+- express
+- cors
+- nodemon
+- axios
+
+It can be run on a command line terminal with the script: nodemon index.js 
+
