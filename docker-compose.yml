@@ -1,8 +1,47 @@
- version: "3.7"
-
- services:
-  auth:
-    image: 8e94b9f083c8
+version: '3.8'
+services:
+  comments:
+    build: comments/.
     ports:
-      - 4000:4000
-    working_dir: /497S-Project/auth
+      - "4005:4005"
+  event-bus:
+    build: event-bus/.
+    ports:
+      - "5000:5000"
+  manageUserState:
+    build: moderation/.
+    ports:
+      - "4003:4003"
+  posts:
+    build: posts/.
+    ports:
+      - "4004:4004"
+  auth:
+    build: auth/.
+    ports:
+      - "4000:4000"
+    # depends_on:
+      # - "posts-db"
+#   posts-db:
+#     build: posts-db/.
+#     ports:
+#       - "5000:5000"
+#     depends_on:
+#       - "posts-db-pg"
+#   posts-db-pg:
+#     build: databases/post-db-pg/.
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#     restart: always
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - pg_data:/var/lib/postgresql/data
+#   query:
+#     build: query/.
+#     ports:
+#       - "4002:4002"
+
+# volumes:
+#   pg_data: null
