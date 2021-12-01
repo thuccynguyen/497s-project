@@ -8,8 +8,8 @@ services:
     build: event-bus/.
     ports:
       - "5000:5000"
-  manageUserState:
-    build: moderation/.
+  manage-user-state:
+    build: manage-user-state/.
     ports:
       - "4003:4003"
   posts:
@@ -20,6 +20,18 @@ services:
     build: auth/.
     ports:
       - "4000:4000"
+  likes:
+    build: likes/.
+    ports:
+      - "4006:4006"
+  validate-account:
+    build: validate-account/.
+    ports:
+      - "4002:4002"
+  create-account:
+    build: create-account/.
+    ports:
+      - "4001:4001"
     # depends_on:
       # - "posts-db"
 #   posts-db:

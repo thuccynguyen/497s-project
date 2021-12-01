@@ -1,5 +1,5 @@
 # pull the Node Docker image
-FROM node:current-alpine
+FROM node:current-alpine3.12
 
 # Create the directory inside the container for the app
 WORKDIR /usr/app

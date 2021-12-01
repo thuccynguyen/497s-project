@@ -1,21 +1,20 @@
 # pull the Node Docker image
-FROM node:current-alpine
+FROM node:current-alpine3.12
 
 # Create the directory inside the container for the app
-WORKDIR /497S-Project/auth
+WORKDIR /usr/app
 
 # Copy configuration files to the container
-COPY ./package.json ./
-COPY ./package-lock.json ./
+COPY package.json .
 
 # Install libraries
-RUN npm install
+RUN npm install --quiet
 
 # Copy the code into the container
-COPY . ./auth/index.js 
+COPY . .
 
 # our app is running on port 4000 within the container, so need to expose it
 EXPOSE 4000
 
 # the command that starts our app
-CMD ["npm", "run", "start_server"]
+CMD ["npm", "start_server"]

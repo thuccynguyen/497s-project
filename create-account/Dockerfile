@@ -1,5 +1,5 @@
 # pull the Node Docker image
-FROM node:current-alpine
+FROM node:current-alpine3.12
 
 # Create the directory inside the container for the app
 WORKDIR /usr/app
@@ -14,7 +14,7 @@ RUN npm install --quiet
 COPY . .
 
 # our app is running on port 4000 within the container, so need to expose it
-EXPOSE 4003
+EXPOSE 4005
 
 # the command that starts our app
 CMD ["npm", "start"]
