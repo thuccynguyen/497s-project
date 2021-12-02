@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 4000
 
 # the command that starts our app
-CMD ["npm", "start_server"]
+CMD ["npm", "start"]
