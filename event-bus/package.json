@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "author": "Thuccy Nguyen",
   "license": "ISC",
