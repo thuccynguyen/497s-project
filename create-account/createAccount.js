@@ -36,6 +36,7 @@ app.post('/user', async function(req, res){
         pWord: password
     };
 
+    try {
     await axios.post('http://localhost:5000/events', {
         type: 'UserCreated',
         data: {
@@ -44,7 +45,14 @@ app.post('/user', async function(req, res){
             pWord: password
         },
     });
-
+    }
+    catch (e) {
+        console.log('There was an error');
+        console.log(e.message);
+        res.status(404).send({});
+        return;
+      }
+      
     res.status(200).send(users[userId])
 })
 

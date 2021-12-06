@@ -13,8 +13,8 @@ RUN npm install --quiet
 # Copy the code into the container
 COPY . .
 
-# our app is running on port 4000 within the container, so need to expose it
-EXPOSE 4000
+# our app is running on port 4000 within the container, so need to #EXPOSE it
+#EXPOSE 4000
 
 # the command that starts our app
 CMD ["npm", "start"]
