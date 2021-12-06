@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const crypto = require('crypto');
+const { readdirSync } = require("fs");
 
 const app = express();
 app.use(express.json());
@@ -10,6 +11,11 @@ app.use(express.static(__dirname));
 app.use(cors());
 
 posts = {};
+
+function filterObject(obj, callback) {
+    return Object.fromEntries(Object.entries(obj).
+      filter(([key, val]) => callback(val, key)));
+  }
 
 app.post("/events", function(req, res){
     const { type, data } = req.body;
@@ -21,12 +27,13 @@ app.post("/events", function(req, res){
 app.post('/user/:id/create', async function(req, res){
     userId = req.params.id;
     postId = crypto.randomBytes(6).toString("hex");
-
+    postTag = req.body.tag
     const content = req.body.content;
     
     posts[userId] = {
         pId: postId,
-        pContent: content
+        pContent: content,
+        pTag: postTag
     };
 
     await axios.post('http://localhost:5000/events', {
@@ -34,7 +41,9 @@ app.post('/user/:id/create', async function(req, res){
         data: {
             uId: userId,
             pId: postId,
-            pContent: content
+            pContent: content,
+            pTag: postTag
+
         },
     });
 
@@ -47,6 +56,13 @@ app.get('/posts', function(req, res){
 
 app.get('/user/:id/posts', function(req, res){
     res.status(200).send(posts[req.params.id]);
+})
+
+app.get('/filter/:tag', function(req, res) {
+   const filtered = Object.fromEntries(
+    Object.entries(posts).filter(([key, value]) => value.tag === req.body.param) )
+    console.log(filtered)
+    res.status(200).send(filtered)
 })
 
 app.listen(4004, function(){
