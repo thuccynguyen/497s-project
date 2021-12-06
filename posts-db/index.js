@@ -25,9 +25,9 @@ app.post("/events", async (req, res) =>
 
     if (type == "PostCreated")
     {
-        const {uId, pId, pContent} = data;
-        const text = 'INSERT INTO posts VALUES ($1, $2, $3)';
-        const values = [uId, pId, pContent];
+        const {uId, pId, pContent, pTag} = data;
+        const text = 'INSERT INTO posts VALUES ($1, $2, $3, $4)';
+        const values = [uId, pId, pContent, pTag];
         await client.query(text, values);
     }
 
