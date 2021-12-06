@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const axios = require('axios')
+const crypto = require('crypto')
 
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
@@ -14,10 +15,12 @@ var curr_state = "guest-user"
 app.post('/login', async function (req, res) {
     const user = req.body.username;
     const pass = req.body.password;
+    const userId = crypto.randomBytes(6).toString("hex");
 
     await axios.post("http://localhost:5000/events", {
         type: 'LoginAttempted',
         data: {
+            userId: userId,
             username: user,
             password: pass
         }

@@ -1,111 +1,109 @@
 CREATE TABLE IF NOT EXISTS users 
 (
-    userId varchar(255) PRIMARY KEY, 
-    firstName varchar(255), 
-    lastName varchar(255), 
-    emailAddress varchar(255),
-    password varchar(255),
-    numberFollowers int,
-    numberFollowing int
+    userId varchar(255),
+    username varchar(255), 
+    password varchar(255)
 );
 
 INSERT INTO users VALUES 
 (
-    '0', 'Johan', 'Thomas Sajan', 'jthomassajan@umass.edu', 'jthomassajan', 0, 0
+    '0', 'Johan', 'jthomassajan'
 );
 
 INSERT INTO users VALUES 
 (
-    '1', 'Thuccy', 'Nguyen', 'tnguyen@umass.edu', 'tnguyen', 0, 0
+    '1', 'Thuccy', 'tnguyen'
 );
 
 INSERT INTO users VALUES 
 (
-    '2', 'Jess', 'Green', 'jgreen@umass.edu', 'jgreen', 0, 0
+    '2', 'Jess', 'jgreen'
 );
 
 INSERT INTO users VALUES 
 (
-    '3', 'Zack', 'Simonelli', 'zsimonelli@umass.edu', 'zsimonelli', 0, 0
+    '3', 'Zack', 'zsimonelli'
 );
 
 CREATE TABLE IF NOT EXISTS posts 
 (
-    postId varchar(255) PRIMARY KEY, 
-    postCategory varchar(255), 
-    numberLikes int,
-    numberComments int,
-    userId varchar(255) REFERENCES users(userId)
+    userId varchar(255),
+    postId varchar(255), 
+    post varchar(255),
+    tag varchar(255)
 );
 
 INSERT INTO posts VALUES 
 (
-    '0', 'Dining', 0, 0, '0'
+    '0', '0', 'Post 0', 'Tag 0'
 );
 
 INSERT INTO posts VALUES 
 (
-    '1', 'Blue Wall', 0, 0, '1'
+    '1', '1', 'Post 1', 'Tag 1'
 );
 
 INSERT INTO posts VALUES 
 (
-    '2', 'Dining', 0, 0, '2'
+    '2', '2', 'Post 2', 'Tag 2'
 );
 
 INSERT INTO posts VALUES 
 (
-    '3', 'Blue Wall', 0, 0, '3'
+    '3', '3', 'Post 3', 'Tag 3'
 );
 
 CREATE TABLE IF NOT EXISTS comments 
 (   
-    userId varchar(255) REFERENCES users(userId),
-    postId varchar(255) REFERENCES posts(postId)
+    commentId varchar(255),
+    postId varchar(255),
+    comment varchar(255),
+    status varchar(255)
 );
 
 INSERT INTO comments VALUES 
 (
-    '0', '0'
+    '0', '0', 'Comment 0', 'Created'
 );
 
 INSERT INTO comments VALUES 
 (
-    '1', '1'
+    '1', '1', 'Comment 1', 'Created'
 );
 
 INSERT INTO comments VALUES 
 (
-    '2', '2'
+    '2', '2', 'Comment 2', 'Created'
 );
 
 INSERT INTO comments VALUES 
 (
-    '3', '3'
+    '3', '3', 'Comment 3', 'Created'
 );
 
 CREATE TABLE IF NOT EXISTS likes 
 (   
-    userId varchar(255) REFERENCES users(userId),
-    postId varchar(255) REFERENCES posts(postId)
+    postId varchar(255),
+    liked varchar(255),
+    totaLikes int
 );
 
 INSERT INTO likes VALUES 
 (
-    '0', '0'
+    '0', 'true', '1'
 );
 
 INSERT INTO likes VALUES 
 (
-    '1', '1'
+    '1', 'true', '1'
 );
 
 INSERT INTO likes VALUES 
 (
-    '2', '2'
+    '2', 'true', '1'
 );
 
 INSERT INTO likes VALUES 
 (
-    '3', '3'
+    '3', 'true', '1'
 );

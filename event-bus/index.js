@@ -55,6 +55,21 @@ app.post("/events", (req, res) => {
     console.log(err.message);
   });
 
+  // likes-db
+  axios.post("http://localhost:4009/events", event).catch((err) => {
+    console.log(err.message);
+  });
+
+  // posts-db
+  axios.post("http://localhost:4010/events", event).catch((err) => {
+    console.log(err.message);
+  });
+
+  // users-db
+  axios.post("http://localhost:4011/events", event).catch((err) => {
+    console.log(err.message);
+  });
+
   res.send({ status: "OK" });
 });
 
