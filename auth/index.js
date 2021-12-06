@@ -87,6 +87,16 @@ app.post('/events', async (req, res) => {
           }
         });
       }
+      else{
+        await axios.post('http://localhost:5000/events', {
+          type: 'UserDenied',
+          data: {
+            // id: userId,
+            user: username,
+            password: password
+          }
+        });
+      }
     }
   
 });

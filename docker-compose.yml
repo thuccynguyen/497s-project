@@ -32,15 +32,7 @@ services:
     build: create-account/.
     ports:
       - "4001:4001"
-    # depends_on:
-      # - "posts-db"
-#   posts-db:
-#     build: posts-db/.
-#     ports:
-#       - "5000:5000"
-#     depends_on:
-#       - "posts-db-pg"
-#   posts-db-pg:
+#   database:
 #     build: databases/post-db-pg/.
 #     environment:
 #       - POSTGRES_USER=postgres

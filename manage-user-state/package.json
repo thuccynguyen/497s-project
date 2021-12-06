@@ -2,7 +2,7 @@
   "name": "dine-with-umass",
   "version": "1.0.0",
   "description": "a microservice prototype",
-  "main": "moderateUserStatus.js",
+  "main": "index.js",
   "scripts": {
     "test": "node index.js",
     "start": "nodemon index.js"

@@ -7,6 +7,9 @@ app.use(express.json());
 app.post("/events", (req, res) => {
   const event = req.body;
 
+  console.log(`[event-bus] Received Event ${event.type}`);
+  console.log(`[event-bus] Sending Event ${event.type} To All Services`);
+
   // auth
   axios.post("http://localhost:4000/events", event).catch((err) => {
     console.log(err.message);
