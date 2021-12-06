@@ -11,64 +11,64 @@ app.post("/events", (req, res) => {
   console.log(`[event-bus] Sending Event ${event.type} To All Services`);
 
   // auth
-  axios.post("http://localhost:4000/events", event).catch((err) => {
+  axios.post("http://auth:4000/events", event).catch((err) => {
     console.log(err.message);
   });
 
   // createUser
-  axios.post("http://localhost:4001/events", event).catch((err) => {
+  axios.post("http://create-account:4001/events", event).catch((err) => {
     console.log(err.message);
   });
 
   // validateAccount
-  axios.post("http://localhost:4002/events", event).catch((err) => {
+  axios.post("http://validate-account:4002/events", event).catch((err) => {
     console.log(err.message);
   });
 
   // manageUserState
-  axios.post("http://localhost:4003/events", event).catch((err) => {
+  axios.post("http://manage-user-state:4003/events", event).catch((err) => {
     console.log(err.message);
   });
 
   // createPost
-  axios.post("http://localhost:4004/events", event).catch((err) => {
+  axios.post("http://posts:4004/events", event).catch((err) => {
     console.log(err.message);
   });
 
   // addComment
-  axios.post("http://localhost:4005/events", event).catch((err) => {
+  axios.post("http://comments:4005/events", event).catch((err) => {
     console.log(err.message);
   });
 
   // likes
-  axios.post("http://localhost:4006/events", event).catch((err) => {
+  axios.post("http://likes:4006/events", event).catch((err) => {
     console.log(err.message);
   });
 
-  // userPosts
-  axios.post("http://localhost:4007/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  // // userPosts
+  // axios.post("http://localhost:4007/events", event).catch((err) => {
+  //   console.log(err.message);
+  // });
 
-  // comments-db
-  axios.post("http://localhost:4008/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  // // comments-db
+  // axios.post("http://comments-db:4008/events", event).catch((err) => {
+  //   console.log(err.message);
+  // });
 
-  // likes-db
-  axios.post("http://localhost:4009/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  // // likes-db
+  // axios.post("http://likes-db:4009/events", event).catch((err) => {
+  //   console.log(err.message);
+  // });
 
-  // posts-db
-  axios.post("http://localhost:4010/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  // // posts-db
+  // axios.post("http://posts-db:4010/events", event).catch((err) => {
+  //   console.log(err.message);
+  // });
 
-  // users-db
-  axios.post("http://localhost:4011/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  // // users-db
+  // axios.post("http://users-db:4011/events", event).catch((err) => {
+  //   console.log(err.message);
+  // });
 
   res.send({ status: "OK" });
 });

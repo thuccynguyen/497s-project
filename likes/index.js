@@ -33,7 +33,7 @@ app.post("/posts/:id/like", async (req, res) => {
     posts[req.params.id].liked = true;
     posts[req.params.id].total_likes++;
 
-    await axios.post("http://localhost:5000/events", {
+    await axios.post("http://event-bus:5000/events", {
       type: "PostLiked",
       data: {
         id: req.params.id,

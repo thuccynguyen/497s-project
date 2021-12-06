@@ -43,7 +43,7 @@ app.post("/posts/:id/comments", async (req, res) =>
       status: "Created" 
   };
 
-  await axios.post("http://localhost:5000/events", 
+  await axios.post("http://event-bus:5000/events", 
   {
     type: "CommentCreated",
     data: 

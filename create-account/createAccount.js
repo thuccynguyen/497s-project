@@ -12,18 +12,18 @@ app.use(express.static(__dirname));
 const users = {};
 
 
-app.post("/events", function(req, res){
+app.post("/events", function (req, res) {
     const { type, data } = req.body;
     console.log("Event Received:", req.body.type);
 
     res.send(users);
 })
 
-app.get('/user/:id', function(req, res){
+app.get('/user/:id', function (req, res) {
     res.status(200).send(users[req.params.id])
 })
 
-app.post('/user', async function(req, res){
+app.post('/user', async function (req, res) {
     const userId = crypto.randomBytes(6).toString("hex");
 
     const username = req.body.username;
@@ -37,25 +37,24 @@ app.post('/user', async function(req, res){
     };
 
     try {
-    await axios.post('http://localhost:5000/events', {
-        type: 'UserCreated',
-        data: {
-            id: userId,
-            uName: username,
-            pWord: password
-        },
-    });
+        await axios.post('http://event-bus:5000/events', {
+            type: 'UserCreated',
+            data: {
+                id: userId,
+                uName: username,
+                pWord: password
+            },
+        });
     }
     catch (e) {
-        console.log('There was an error');
+        console.log('There was an error in createAccount');
         console.log(e.message);
         res.status(404).send({});
         return;
-      }
-      
+    }
     res.status(200).send(users[userId])
 })
 
-app.listen(4001, function(){
+app.listen(4001, function () {
     console.log("Listening on port 4001")
 })

@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 
-var curr_user = {id: "", password: ""}
+var curr_user = { id: "", password: "" }
 var curr_state = "guest-user"
 
 app.post('/login', async function (req, res) {
@@ -17,21 +17,28 @@ app.post('/login', async function (req, res) {
     const pass = req.body.password;
     const userId = crypto.randomBytes(6).toString("hex");
 
-    await axios.post("http://localhost:5000/events", {
-        type: 'LoginAttempted',
-        data: {
-            userId: userId,
-            username: user,
-            password: pass
-        }
-    })
-
+    try {
+        await axios.post("http://event-bus:5000/events", {
+            type: 'LoginAttempted',
+            data: {
+                userId: userId,
+                username: user,
+                password: pass
+            }
+        })
+    }
+    catch (e) {
+        console.log('There was an error manage-user-state');
+        console.log(e.message);
+        res.status(404).send({});
+        return;
+    }
     res.status(200).send("Welcome " + user)
-    
+
 
 })
 
-app.post('/logout', function(req, res) {
+app.post('/logout', function (req, res) {
     curr_user.id = "";
     curr_user.password = "";
     curr_state = "guest-user"
@@ -39,11 +46,11 @@ app.post('/logout', function(req, res) {
 })
 
 app.listen(4003, function () {
-  console.log('Listening on port 4003')
+    console.log('Listening on port 4003')
 })
 
 app.post('/events', (req, res) => {
-    const {type, data} = req.body
+    const { type, data } = req.body
     console.log('Event Received:', type)
 
     if (type === 'UserAuthorized') {

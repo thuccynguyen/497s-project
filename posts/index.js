@@ -36,7 +36,7 @@ app.post('/user/:id/create', async function(req, res){
         pTag: postTag
     };
 
-    await axios.post('http://localhost:5000/events', {
+    await axios.post('http://event-bus:5000/events', {
         type: 'PostCreated',
         data: {
             uId: userId,
