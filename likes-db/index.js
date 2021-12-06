@@ -21,20 +21,20 @@ client.connect();
 app.post("/events", async (req, res) => 
 {
     const {type, data} = req.body;
-    console.log("Recieved comment", type);
+    console.log("Recieved like", type);
 
-    if (type == "CommentCreated")
+    if (type == "PostLiked")
     {
-        const {commentId, postId, comment, status} = data;
-        const text = 'INSERT INTO comments VALUES ($1, $2, $3, $4)';
-        const values = [commentId, postId, comment, status];
+        const {id, liked, total_likes} = data;
+        const text = 'INSERT INTO likes VALUES ($1, $2, $3)';
+        const values = [id, liked, total_likes];
         await client.query(text, values);
     }
 
     res.send({});
 });
 
-app.listen(4008, () =>
+app.listen(4009, () =>
 {
-    console.log("Listening on port 4008");
+    console.log("Listening on port 4009");
 });
