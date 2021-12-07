@@ -26,6 +26,12 @@ app.post("/events", async (req, res) =>
     const type = req.body.type;
     console.log("Event Received:", type);
 
+    if (type === "PostCreated") {
+      const { pId }= data;
+      
+      comments[pId] = { pid: pId, commentId: 0, comment: "" };
+    }
+
     res.send(comments);
 });
 

@@ -21,6 +21,15 @@ app.post("/events", function(req, res){
     const { type, data } = req.body;
     console.log("Event Received:", req.body.type);
 
+    if (type === "PostLiked") {
+        posts[data.pid] = {pid: pId, pContent: content, pTag: postTag, liked: liked, total: total_likes};
+    }
+
+    if (type === "CommentCreated"){
+        posts[data.postId] = {pid: pId, pContent: content, pTag: postTag, commentId: commentId, 
+            ccontent: comment, liked: liked, total: total_likes};
+    }
+
     res.send(posts);
 })
 

@@ -18,7 +18,7 @@ app.post("/events", (req, res) => {
   console.log("Event Received:", req.body.type);
 
   if (type === "PostCreated") {
-     const { pId }= data;
+    const { pId }= data;
     
     posts[pId] = { pid: pId, liked: false, total_likes: 0 };
 
@@ -36,7 +36,7 @@ app.post("/posts/:id/like", async (req, res) => {
     await axios.post("http://event-bus:5000/events", {
       type: "PostLiked",
       data: {
-        id: req.params.id,
+        pid: req.params.id,
         liked: posts[req.params.id].liked,
         total_likes: posts[req.params.id].total_likes,
       },
