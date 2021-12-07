@@ -35,22 +35,22 @@ CREATE TABLE IF NOT EXISTS posts
 
 INSERT INTO posts VALUES 
 (
-    '0', '0', 'Post 0', 'Tag 0'
+    '0', '0', 'Post 0', 'Berk'
 );
 
 INSERT INTO posts VALUES 
 (
-    '1', '1', 'Post 1', 'Tag 1'
+    '1', '1', 'Post 1', 'Berk'
 );
 
 INSERT INTO posts VALUES 
 (
-    '2', '2', 'Post 2', 'Tag 2'
+    '2', '2', 'Post 2', 'Hamp'
 );
 
 INSERT INTO posts VALUES 
 (
-    '3', '3', 'Post 3', 'Tag 3'
+    '3', '3', 'Post 3', 'Frank'
 );
 
 CREATE TABLE IF NOT EXISTS comments 

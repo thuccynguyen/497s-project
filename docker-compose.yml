@@ -1,9 +1,5 @@
 version: '3.8'
 services:
-  comments:
-    build: comments/.
-    ports:
-      - "4005:4005"
   event-bus:
     build: event-bus/.
     ports:
@@ -32,20 +28,28 @@ services:
     build: create-account/.
     ports:
       - "4001:4001"
-#   database:
-#     build: databases/post-db-pg/.
-#     environment:
-#       - POSTGRES_USER=postgres
-#       - POSTGRES_PASSWORD=postgres
-#     restart: always
-#     ports:
-#       - "5432:5432"
-#     volumes:
-#       - pg_data:/var/lib/postgresql/data
-#   query:
-#     build: query/.
-#     ports:
-#       - "4002:4002"
+  comments:
+    build: comments/.
+    ports:
+      - "4005:4005"
+    depends_on:
+      - "comments-db"
+  comments-db:
+    build: comments-db/.
+    ports:
+      - "4008:4008" 
+    depends_on:
+      - "database"
+  database:
+    build: databases/database/.
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data   
 
-# volumes:
-#   pg_data: null
+volumes:
+  pg_data: null

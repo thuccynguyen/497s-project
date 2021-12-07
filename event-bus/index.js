@@ -50,10 +50,10 @@ app.post("/events", (req, res) => {
   //   console.log(err.message);
   // });
 
-  // // comments-db
-  // axios.post("http://comments-db:4008/events", event).catch((err) => {
-  //   console.log(err.message);
-  // });
+  // comments-db
+  axios.post("http://comments-db:4008/events", event).catch((err) => {
+    console.log(err.message);
+  });
 
   // // likes-db
   // axios.post("http://likes-db:4009/events", event).catch((err) => {
