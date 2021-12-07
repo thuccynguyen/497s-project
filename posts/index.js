@@ -22,12 +22,12 @@ app.post("/events", function(req, res){
     console.log("Event Received:", req.body.type);
 
     if (type === "PostLiked") {
-        posts[data.pid] = {pid: pId, pContent: content, pTag: postTag, liked: liked, total: total_likes};
+        posts[data.pid] = {pid: data.pId, pContent: data.content, pTag: data.postTag, liked: data.liked, total: data.total_likes};
     }
 
     if (type === "CommentCreated"){
-        posts[data.postId] = {pid: pId, pContent: content, pTag: postTag, commentId: commentId, 
-            ccontent: comment, liked: liked, total: total_likes};
+        posts[data.pid] = {pid: data.pId, pContent: data.content, pTag: data.postTag, commentId: data.commentId, 
+            ccontent: data.comment, liked: data.liked, total: data.total_likes};
     }
 
     res.send(posts);

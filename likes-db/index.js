@@ -21,7 +21,7 @@ client.connect();
 app.post("/events", async (req, res) => 
 {
     const {type, data} = req.body;
-    console.log("Recieved like", type);
+    console.log("Event Received:", type);
 
     if (type == "PostLiked")
     {
