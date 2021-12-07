@@ -10,7 +10,7 @@ app.use(cors());
 const client = new Client
 ({
     user: "postgres",
-    host: "localhost",
+    host: "database",
     database: "postgres",
     password: "postgres",
     port: "5432"
@@ -23,11 +23,11 @@ app.post("/events", async (req, res) =>
     const {type, data} = req.body;
     console.log("Recieved login", type);
 
-    if (type == "LoginAttempted")
+    if (type == "UserCreated")
     {
-        const {userId,username, password} = data;
+        const {id, uName, pWord} = data;
         const text = 'INSERT INTO users VALUES ($1, $2, $3)';
-        const values = [userId, username, password];
+        const values = [id, uName, pWord];
         await client.query(text, values);
     }
 

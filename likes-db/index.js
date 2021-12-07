@@ -10,7 +10,7 @@ app.use(cors());
 const client = new Client
 ({
     user: "postgres",
-    host: "localhost",
+    host: "database",
     database: "postgres",
     password: "postgres",
     port: "5432"
@@ -25,9 +25,9 @@ app.post("/events", async (req, res) =>
 
     if (type == "PostLiked")
     {
-        const {id, liked, total_likes} = data;
+        const {pid, liked, total_likes} = data;
         const text = 'INSERT INTO likes VALUES ($1, $2, $3)';
-        const values = [id, liked, total_likes];
+        const values = [pid, liked, total_likes];
         await client.query(text, values);
     }
 

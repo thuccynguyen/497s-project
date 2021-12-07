@@ -12,6 +12,14 @@ services:
     build: posts/.
     ports:
       - "4004:4004"
+    depends_on:
+      - "posts-db"
+  posts-db:
+    build: posts-db/.
+    ports:
+      - "4010:4010"
+    depends_on:
+      - "database"
   auth:
     build: auth/.
     ports:
@@ -20,6 +28,14 @@ services:
     build: likes/.
     ports:
       - "4006:4006"
+    depends_on:
+      - "likes-db"
+  likes-db:
+    build: likes-db/.
+    ports:
+      - "4009:4009"
+    depends_on:
+      - "database"
   validate-account:
     build: validate-account/.
     ports:
@@ -28,6 +44,14 @@ services:
     build: create-account/.
     ports:
       - "4001:4001"
+    depends_on:
+      - "users-db"
+  users-db:
+    build: users-db/.
+    ports:
+      - "4011:4011"
+    depends_on:
+      - "database"
   comments:
     build: comments/.
     ports:

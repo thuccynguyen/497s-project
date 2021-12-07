@@ -55,20 +55,20 @@ app.post("/events", (req, res) => {
     console.log(err.message);
   });
 
-  // // likes-db
-  // axios.post("http://likes-db:4009/events", event).catch((err) => {
-  //   console.log(err.message);
-  // });
+ // likes-db
+  axios.post("http://likes-db:4009/events", event).catch((err) => {
+    console.log(err.message);
+ });
 
-  // // posts-db
-  // axios.post("http://posts-db:4010/events", event).catch((err) => {
-  //   console.log(err.message);
-  // });
+  // posts-db
+  axios.post("http://posts-db:4010/events", event).catch((err) => {
+    console.log(err.message);
+ });
 
-  // // users-db
-  // axios.post("http://users-db:4011/events", event).catch((err) => {
-  //   console.log(err.message);
-  // });
+  // users-db
+  axios.post("http://users-db:4011/events", event).catch((err) => {
+    console.log(err.message);
+  });
 
   res.send({ status: "OK" });
 });
